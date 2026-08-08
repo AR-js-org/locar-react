@@ -1,8 +1,8 @@
 {
   "name": "locar-react-examples",
-  "version" : "0.0.1",
+  "version" : "0.0.2",
   "dependencies": {
-    "locar-react" : "file:../locar-react-0.0.1.tgz"
+    "locar-react" : "file:../locar-react-0.0.2.tgz"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.5",
