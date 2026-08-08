@@ -1,0 +1,17 @@
+{
+  "name": "locar-react-examples",
+  "version" : "0.0.1",
+  "dependencies": {
+    "locar-react" : "file:../locar-react-0.0.1.tgz"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0"
+  },
+
+  "scripts": {
+    "dev": "vite dev",
+    "build": "tsc && vite build"
+  }
+}

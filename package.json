@@ -1,0 +1,36 @@
+{
+  "name": "locar-react",
+  "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/locar-react.umd.js",
+  "module": "./dist/locar-react.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/locar-react.es.js",
+      "require": "./dist/locar-react.umd.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "dependencies": {
+    "@react-three/fiber": "^9.7.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "@types/three": "^0.185.3",
+    "locar": "0.2.7",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@typescript/typescript6": "^6.0.2",
+    "@vitejs/plugin-react": "^6.0.5",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0",
+    "unplugin-dts": "^1.0.3"
+  },
+  "scripts": {
+    "build": "tsc && vite build && npm pack"
+  }
+}
