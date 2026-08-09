@@ -1,6 +1,6 @@
 {
   "name": "locar-react-examples",
-  "version" : "0.0.2",
+  "version" : "0.0.3",
   "dependencies": {
     "locar-react" : "file:../locar-react-0.0.2.tgz"
   },

@@ -10,6 +10,7 @@
         "jsx": "preserve"
     },
     "files": [
-        "./main.tsx"
+        "./01-hello-world/main.tsx",
+        "./02-geoline/main.tsx"
     ]
 }
