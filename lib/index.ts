@@ -2,7 +2,7 @@ import LocAR from './components/LocAR';
 import Anchor from './components/Anchor';
 import GeoLine from './components/GeoLine';
 import useLocar from './hooks/useLocar';
-import type { LocARProps, LocARInfo, AnchorProps, GeoLineProps } from './types';
+import type { LocARProps, LocARInfo, AnchorProps, GeoLineProps, PositionUpdateInfo } from './types';
 
 export { 
     LocAR,
@@ -12,5 +12,6 @@ export {
     LocARProps,
     LocARInfo,
     AnchorProps,
-    GeoLineProps
+    GeoLineProps,
+    PositionUpdateInfo
 }

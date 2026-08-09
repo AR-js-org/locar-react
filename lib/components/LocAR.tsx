@@ -9,9 +9,8 @@ import * as THREE from 'three';
 const LocarContext = React.createContext({});
 export { LocarContext };
 
-import type { LocARInfo, LocARProps } from '../types';
+import type { LocARInfo, LocARProps, PositionUpdateInfo } from '../types';
 export default function LocAR({ options, fakeLon, fakeLat, elevation, onGpsUpdate, children }: LocARProps) {
-
     const [locar, setLocar] = useState<LocARInfo | null>(null);
     const app = useRef<App | null>(null);
 
@@ -29,7 +28,7 @@ export default function LocAR({ options, fakeLon, fakeLat, elevation, onGpsUpdat
             app.current = new App({ ...(options || {}), threeObjects: { camera: camera as THREE.PerspectiveCamera, scene, renderer: gl } });
             const tmpLocarObject = await app.current.start();
 
-            tmpLocarObject.on("gpsupdate", (position: GeolocationPosition) => {
+            tmpLocarObject.on("gpsupdate", (position: PositionUpdateInfo) => {
                 // Do not provide locar to children until we have an initial position
                 setLocar({ locar: tmpLocarObject, cameraFeedDimensions: app.current!.cameraFeedDimensions });
                 onGpsUpdate?.(position);
