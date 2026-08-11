@@ -1,12 +1,12 @@
 
 import { Canvas } from '@react-three/fiber';
 
-import { LocAR, Anchor, GeoLine } from 'locar-react';
+import { LocARComponent, Anchor, GeoLine } from 'locar-react';
 
 export default function App() {
     return (
         <Canvas camera={{ fov: 60, near: 0.001, far: 4000 }}>
-            <LocAR fakeLon={-0.72} fakeLat={51.05} elevation={5}>
+            <LocARComponent fakeLon={-0.72} fakeLat={51.05} elevation={5}>
                 <Anchor longitude={-0.7205} latitude={51.0505}>
                     <mesh>
                         <meshBasicMaterial color={0xff0000} />
@@ -33,7 +33,7 @@ export default function App() {
                     [-0.72, 51.052, 23]]} width={2}>
                     <meshBasicMaterial color={0x00ff00} />
                 </GeoLine>
-            </LocAR>
+            </LocARComponent>
         </Canvas>
     );
 }
