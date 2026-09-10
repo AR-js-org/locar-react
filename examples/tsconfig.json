@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "noEmit": true,
+        "skipLibCheck": true,
+        "target": "esnext",
+        "esModuleInterop": true,
+        "module": "preserve",
+        "moduleResolution": "bundler",
+        "jsx": "preserve"
+    },
+    "files": [
+        "./01-hello-world/main.tsx",
+        "./02-geoline/main.tsx"
+    ]
+}
