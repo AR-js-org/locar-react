@@ -49,6 +49,8 @@ export default function LocARComponent({ options, fakeLon, fakeLat, elevation, o
         }
         if (fakeLat !== undefined && fakeLon !== undefined) {
             tmpLocar.fakeGps(fakeLon, fakeLat);
+        } else {
+            tmpLocar.startGps();
         }
 
     }
