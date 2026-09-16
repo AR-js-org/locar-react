@@ -1,6 +1,6 @@
 {
   "name": "locar-react",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "files": [
     "dist"
   ],
@@ -19,7 +19,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@types/three": "^0.185.3",
-    "locar": "^0.2.11",
+    "locar": "^0.2.12",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

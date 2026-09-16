@@ -5,7 +5,7 @@ import { LocARComponent, Anchor, GeoLine } from 'locar-react';
 
 export default function App() {
     return (
-        <Canvas camera={{ fov: 60, near: 0.001, far: 4000 }}>
+        <Canvas camera={{ fov: 60, near: 0.001, far: 4000 }} dpr={1}>
             <LocARComponent fakeLon={-0.72} fakeLat={51.05} elevation={5}>
                 <Anchor longitude={-0.7205} latitude={51.0505}>
                     <mesh>
