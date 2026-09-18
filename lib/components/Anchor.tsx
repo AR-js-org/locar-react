@@ -4,7 +4,7 @@ import useLocar from '../hooks/useLocar';
 import type { AnchorProps } from '../types';
 
 
-export default function Anchor({ latitude, longitude, elevation, children }: AnchorProps) {
+export default function Anchor({ latitude, longitude, altitude, children }: AnchorProps) {
 
 
     const { locar } = useLocar();
@@ -15,8 +15,8 @@ export default function Anchor({ latitude, longitude, elevation, children }: Anc
 
         const coords = locar.lonLatToWorldCoords(longitude, latitude);
 
-        setCoords([coords[0], elevation ?? 0, coords[1]]);
-    }, [latitude, longitude, elevation])
+        setCoords([coords[0], altitude ?? 0, coords[1]]);
+    }, [latitude, longitude, altitude])
     return (
         coords === null ? "" :
             <group position={coords}>
