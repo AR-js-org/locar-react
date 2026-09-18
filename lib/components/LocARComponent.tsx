@@ -1,6 +1,6 @@
 import { LocARProps, LocARInfo } from "../types";
 import { useState, useEffect, useRef, createContext } from 'react';
-import { App, GpsReceivedEvent } from 'locar';
+import { App, GpsReceivedEvent, LocAR } from 'locar';
 import { useThree, useFrame, Size } from '@react-three/fiber';
 import { PerspectiveCamera } from "three";
 
@@ -8,13 +8,13 @@ const LocarContext = createContext({});
 export { LocarContext };
 
 
-export default function LocARComponent({ options, fakeLon, fakeLat, elevation, onGpsUpdate, children }: LocARProps) {
+export default function LocARComponent({ options, fakeLon, fakeLat, elevation, hFov = 80, onGpsUpdate, children }: LocARProps) {
 
     const [locar, setLocar] = useState<LocARInfo | null>(null);
     const { camera, gl, scene, size } = useThree();
 
     const app = useRef<App | null>(null);
-    const lastIsLand = useRef<boolean | null>(null);
+
     const cameraFeedDimensions = useRef<{ landWidth: number, landHeight: number } | null>(null);
 
     const curSize = useRef(size);
@@ -24,22 +24,28 @@ export default function LocARComponent({ options, fakeLon, fakeLat, elevation, o
     }, [size]);
 
     useEffect(() => {
+        // ensure hfov is passed to the Three camera before it's passed to LocAR
+        const cam = camera as PerspectiveCamera;
+        cam.fov = LocAR.htov(hFov, size.width / size.height);
+        cam.updateProjectionMatrix();
+
         createLocar();
     }, []);
 
     useFrame(() => {
         app.current?.deviceOrientationControls?.update();
-       
+
         if (size.width != lastSize.current.width || size.height != lastSize.current.height) {
-            console.log("LocARComponent: useFrame(): CHANGED ORIENTATION");
             lastSize.current = { width: size.width, height: size.height };
-            (camera as PerspectiveCamera).aspect = size.width / size.height;
+            const aspect = size.width / size.height;
+            (camera as PerspectiveCamera).aspect = aspect;
             camera.updateProjectionMatrix();
-            app.current?.syncFovWithWebcam(size.width / size.height);
+            app.current?.syncFovWithWebcam(aspect);
         }
     });
 
     async function createLocar() {
+
         app.current = new App({
             ...options, threeObjects: { camera: camera as PerspectiveCamera, renderer: gl, scene },
             dimensionsProvider: () => curSize.current ?? { width: 0, height: 0 }
