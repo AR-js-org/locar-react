@@ -29,12 +29,12 @@ export default function LocARComponent({ options, fakeLon, fakeLat, elevation, o
 
     useFrame(() => {
         app.current?.deviceOrientationControls?.update();
-        const isLand = size.width > size.height;
-        //if (isLand !== lastIsLand.current) {
+       
         if (size.width != lastSize.current.width || size.height != lastSize.current.height) {
             console.log("LocARComponent: useFrame(): CHANGED ORIENTATION");
-            lastIsLand.current = isLand;
             lastSize.current = { width: size.width, height: size.height };
+            (camera as PerspectiveCamera).aspect = size.width / size.height;
+            camera.updateProjectionMatrix();
             app.current?.syncFovWithWebcam(size.width / size.height);
         }
     });
